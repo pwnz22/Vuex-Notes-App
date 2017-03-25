@@ -5,10 +5,12 @@
         </a>
         <div class="note__content">
             <a href="#" class="note__title">
-                {{ note.title }}
+                <span v-if="note.title">{{ note.title }}</span>
+                <span v-else>Без названия</span>
             </a>
             <p class="note__body">
-                {{ note.body }}
+                <span v-if="note.body">{{ note.body }}</span>
+                <span v-else>Напишите что-то...</span>
             </p>
         </div>
     </div>
