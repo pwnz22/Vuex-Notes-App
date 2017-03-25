@@ -5,16 +5,19 @@
         </a>
         <div class="note__content">
             <a href="#" class="note__title">
-                Одна заметка
+                {{ note.title }}
             </a>
             <p class="note__body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur dolor error eum facere fugiat magnam provident repellend</p>
+                {{ note.body }}
+            </p>
         </div>
     </div>
 </template>
 
 <script>
-    export default {}
+    export default {
+        props: ['note']
+    }
 </script>
 
 <style lang="scss" scoped>

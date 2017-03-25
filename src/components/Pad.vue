@@ -1,7 +1,7 @@
 <template>
     <div class="pad">
-        <input type="text" class="pad__title" placeholder="Без названия">
-        <textarea class="pad__text" placeholder="Напишите что-то..."></textarea>
+        <input type="text" class="pad__title" placeholder="Без названия" v-model="note.title">
+        <textarea class="pad__text" placeholder="Напишите что-то..." v-model="note.body"></textarea>
 
         <footer class="pad__footer">
             <ul class="pad__footer-items">
@@ -13,7 +13,14 @@
 </template>
 
 <script>
-    export default {}
+    import {mapGetters} from 'vuex'
+    export default {
+        computed: {
+            ...mapGetters([
+                'note'
+            ])
+        }
+    }
 </script>
 
 <style lang="scss" scoped>

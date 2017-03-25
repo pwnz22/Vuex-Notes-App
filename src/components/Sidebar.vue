@@ -1,19 +1,25 @@
 <template>
     <div class="sidebar">
-        <note></note>
-        <note></note>
-        <note></note>
+        <div v-if="notes.length">
+            <note v-for="(note, index) in notes" :note="note" :key="index"></note>
+        </div>
 
-        <!--<div class="sidebar__content">-->
-        <!--Заметок нет. Напиши заметку...-->
-        <!--</div>-->
+        <div class="sidebar__content" v-else>
+            <p>Заметок нет. Напиши заметку...</p>
+        </div>
     </div>
 </template>
 
 <script>
     import Note from './Note'
+    import {mapGetters} from 'vuex'
 
     export default {
+        computed: {
+            ...mapGetters([
+                'notes'
+            ])
+        },
         components: {Note}
     }
 </script>
