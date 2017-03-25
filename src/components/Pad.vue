@@ -6,7 +6,7 @@
         <footer class="pad__footer">
             <ul class="pad__footer-items">
                 <li class="pad__footer-item">Words: x</li>
-                <li class="pad__footer-item">Last save: xx/xx</li>
+                <li class="pad__footer-item">Last save: {{ lastSaved }}</li>
             </ul>
         </footer>
     </div>
@@ -17,16 +17,22 @@
     export default {
         computed: {
             ...mapGetters([
-                'note'
+                'note',
+                'lastSaved'
             ])
         },
 
         methods: {
             ...mapActions([
-                'saveNote'
+                'saveNote',
+                'startSaveTimeout'
             ]),
             save() {
-                this.saveNote()
+                if (!this.note.id) {
+                    this.saveNote()
+                    return
+                }
+                this.startSaveTimeout()
             }
         }
     }

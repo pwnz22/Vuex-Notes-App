@@ -7,5 +7,17 @@ export default {
 
     [types.PREPEND_TO_NOTES] (state, note) {
         state.notes.unshift(note)
+    },
+
+    [types.TOUCH_LAST_SAVE] (state) {
+        state.note.lastSaved = Date.now()
+    },
+
+    [types.SET_SAVE_TIMEOUT] (state, { callback, delay }) {
+        state.saveTimeout = setTimeout(callback, delay)
+    },
+
+    [types.CLEAR_SAVE_TIMEOUT] (state) {
+        state.saveTimeout = null
     }
 }
