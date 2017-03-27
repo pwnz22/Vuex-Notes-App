@@ -29,10 +29,16 @@ export const startSaveTimeout = ({ commit, dispatch, state }) => {
             dispatch('saveNote')
             dispatch('stopSaveTimeout')
         },
-        delay: 1000
+        delay: 3000
     })
 }
 
 export const stopSaveTimeout = ({ commit, dispatch, state }) => {
+    clearInterval(state.saveTimeout)
     commit(mutations.CLEAR_SAVE_TIMEOUT)
+}
+
+export const clearCurrentNote = ({commit, dispatch}) => {
+    dispatch('stopSaveTimeout')
+    commit(mutations.SET_CURRENT_NOTE, null)
 }

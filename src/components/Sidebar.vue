@@ -7,12 +7,16 @@
         <div class="sidebar__content" v-else>
             <p>Заметок нет. Напиши заметку...</p>
         </div>
+
+        <div class="sidebar__content">
+            <a href="#" @click.prevent="clearCurrentNote(note)">Start new note</a>
+        </div>
     </div>
 </template>
 
 <script>
     import Note from './Note'
-    import {mapGetters} from 'vuex'
+    import {mapGetters, mapActions} from 'vuex'
 
     export default {
         computed: {
@@ -20,7 +24,14 @@
                 'notes'
             ])
         },
-        components: {Note}
+
+        components: {Note},
+
+        methods: {
+            ...mapActions([
+                'clearCurrentNote'
+            ])
+        }
     }
 </script>
 
