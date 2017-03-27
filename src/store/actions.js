@@ -15,6 +15,10 @@ export const storeNote = ({state}) => {
     localStorage.setItem('notes', JSON.stringify(state.notes))
 }
 
+export const openNote = ({commit}, note) => {
+    commit(mutations.SET_CURRENT_NOTE, note)
+}
+
 export const startSaveTimeout = ({ commit, dispatch, state }) => {
     if (state.saveTimeout !== null) {
         return
