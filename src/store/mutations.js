@@ -23,6 +23,10 @@ export default {
         state.saveTimeout = null
     },
 
+    [types.DELETE_NOTE] (state, id) {
+        state.notes = state.notes.filter(note => note.id !== id)
+    },
+
     [types.SET_CURRENT_NOTE] (state, note) {
         if (note === null) {
             state.note = clone(defaultNoteState)
