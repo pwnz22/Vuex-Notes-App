@@ -5,6 +5,6 @@ export default {
         body: null,
         lastSaved: null
     },
-    notes: [],
+    notes: JSON.parse(localStorage.getItem('notes')) || [],
     saveTimeout: null
 }
